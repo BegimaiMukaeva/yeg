@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stairhoppers Movers — Estimate #1260</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════ ANIMATIONS ═══════════════ */
+    @keyframes revealUp { from{opacity:0;transform:translateY(40px) scale(.97)} to{opacity:1;transform:translateY(0) scale(1)} }
+    @keyframes revealRight { from{opacity:0;transform:translateX(40px)} to{opacity:1;transform:translateX(0)} }
+    @keyframes revealLeft { from{opacity:0;transform:translateX(-40px)} to{opacity:1;transform:translateX(0)} }
+    @keyframes revealScale { from{opacity:0;transform:scale(.88)} to{opacity:1;transform:scale(1)} }
+    @keyframes shimmer { 0%{background-position:-300% center} 100%{background-position:300% center} }
+    @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    @keyframes glowBreathe { 0%,100%{box-shadow:0 0 40px rgba(164,186,18,.08)} 50%{box-shadow:0 0 80px rgba(164,186,18,.22)} }
+    @keyframes slideGrad { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    @keyframes gridMove { 0%{transform:translate(0,0)} 50%{transform:translate(6px,-6px)} 100%{transform:translate(0,0)} }
+    @keyframes lineGrow { from{width:0} to{width:60px} }
+    @keyframes tickerScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ═══════════════ VARIABLES ═══════════════ */
+    :root {
+      --pri:#A4BA12; --pri-d:#8DA00F; --deep:#025a42; --accent:#33a622; --forest:#0c361e; --night:#061a0e;
+      --warn:#FF6B00; --ok:#33a622; --danger:#c0392b;
+      --white:#fff; --bg2:#F2F4E9; --bg-page:#E6EAD8; --txt:#0c361e; --txt2:#3d5434; --txt3:#708566; --bdr:#c2cfb0;
+      --ff:'DM Sans',system-ui,sans-serif; --fd:'Outfit','DM Sans',system-ui,sans-serif;
+      --fs-xs:.75rem; --fs-s:.8125rem; --fs:1rem; --fs-l:1.5rem; --fs-xl:2.4rem; --fs-xxl:3.2rem;
+      --mw:1140px; --rad:12px; --rad-l:20px; --shadow:0 16px 56px rgba(12,54,30,.10);
+    }
+
+    /* ═══════════════ RESET ═══════════════ */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--ff);font-size:var(--fs);color:var(--txt);background:var(--bg-page);line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}img{max-width:100%;height:auto}table{border-collapse:collapse}
+    h1,h2,h3,h4,h5,h6{font-family:var(--fd);font-weight:600}
+
+    /* ═══════════════ UTILITIES ═══════════════ */
+    .container{max-width:var(--mw);margin:0 auto;padding-left:15px;padding-right:15px}
+    .d-flex{display:flex}.d-none{display:none}.d-inline{display:inline}.d-block{display:block}
+    .flex-column{flex-direction:column}.flex-row{flex-direction:row}.flex-fill{flex:1 1 auto}.flex-grow-1{flex-grow:1}.flex-wrap{flex-wrap:wrap}
+    .align-items-center{align-items:center}.align-items-start{align-items:flex-start}.align-items-end{align-items:flex-end}
+    .justify-content-between{justify-content:space-between}.justify-content-center{justify-content:center}.justify-content-end{justify-content:flex-end}
+    .text-center{text-align:center}.text-end{text-align:right}.text-start{text-align:left}
+    .text-nowrap{white-space:nowrap}.text-uppercase{text-transform:uppercase}.text-break{word-break:break-word}
+    .w-100{width:100%}.h-100{height:100%}.m-0{margin:0}
+    .mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:1rem}.mb-4{margin-bottom:1.5rem}
+    .mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-4{margin-top:1.5rem}
+    .ms-1{margin-left:.25rem}.ms-2{margin-left:.5rem}.me-1{margin-right:.25rem}.me-2{margin-right:.5rem}.me-3{margin-right:1rem}
+    .p-0{padding:0}.p-2{padding:.5rem}.p-3{padding:1rem}.p-4{padding:1.5rem}
+    .px-4{padding-left:1.5rem;padding-right:1.5rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}
+    .pt-1{padding-top:.25rem}.pt-2{padding-top:.5rem}.pb-4{padding-bottom:1.5rem}
+    .pe-0{padding-right:0}.pe-2{padding-right:.5rem}.ps-0{padding-left:0}
+    .fw-bold{font-weight:700}.font-weight-light{font-weight:300}.font-weight-700{font-weight:700}
+    .rounded-pill{border-radius:50rem}.rounded-lg{border-radius:var(--rad)}
+    .position-relative{position:relative}.position-static{position:static}
+    .opacity-50{opacity:.5}.opacity-75{opacity:.75}.pointer{cursor:pointer}.cursor-pointer{cursor:pointer}
+    .list-unstyled{list-style:none}.no-text-decoration{text-decoration:none}.text-decoration-underline{text-decoration:underline}
+    .invisible{visibility:hidden}
+
+    /* ═══════════════ THEME ═══════════════ */
+    .bg-white{background:var(--white)}.bg-secondary{background:var(--bg2)}.border-rounded{border-radius:var(--rad)}.box-shadow-high{box-shadow:var(--shadow)}
+    .sm-text-branding-title-color{color:var(--deep)}.sm-text-branding-button-bg-color{color:var(--deep)}
+    .sm-text-cp-branding-banner-text-color{color:#fff}.sm-text-white{color:#fff}.sm-text-white-600{color:rgba(255,255,255,.95)}
+    .sm-text-success-500{color:var(--ok)}.sm-text-gray-600{color:var(--txt2)}.sm-bg-warning{background:var(--warn);color:#fff}
+    .sm-font-size-small{font-size:var(--fs-s)}.sm-font-size-normal{font-size:var(--fs)}.sm-font-size-large{font-size:var(--fs-l)}
+    .sm-font-weight-500{font-weight:500}.sm-font-weight-normal{font-weight:400}.sm-font-weight-bolder{font-weight:700}.sm-font-weight-lighter{font-weight:300}
+    .text-primary{color:var(--deep)}.text-black-50{color:var(--txt2)}.text-grey{color:var(--txt3)}.text-dark{color:var(--txt)}
+
+    /* ═══════════════ HEADER ═══════════════ */
+    .header-wrapper{background:var(--white);position:relative;box-shadow:0 1px 0 var(--bdr)}
+    .header-wrapper::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--forest),var(--deep),var(--pri),var(--accent),var(--pri));background-size:400% 100%;animation:slideGrad 8s ease infinite}
+    .contact{padding:14px 0}.app-header{display:flex;align-items:center;justify-content:space-between}
+    .call-us{display:flex;align-items:center;gap:10px}.call-us--btn{display:flex;align-items:center}
+    .call-us--btn .btn{background:none;border:none;padding:0;cursor:pointer}
+    .call-us--text{font-size:var(--fs-s);color:var(--txt3);margin-bottom:-.3em}
+    .call-us--number a{color:var(--deep);font-weight:700}.header-buttons{display:flex;align-items:center;gap:10px}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 28px;border:none;border-radius:12px;font-size:.82rem;font-weight:700;font-family:var(--fd);cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);letter-spacing:.6px;position:relative;overflow:hidden}
+    .btn-custom-branding{background:linear-gradient(135deg,var(--deep) 0%,var(--accent) 100%);color:#fff;box-shadow:0 4px 16px rgba(2,90,66,.3)}
+    .btn-custom-branding::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);transform:translateX(-100%);transition:transform .6s ease}
+    .btn-custom-branding:hover::after{transform:translateX(100%)}
+    .btn-custom-branding:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(2,90,66,.4)}
+    .btn-outline-grey{background:transparent;border:2px solid var(--bdr);color:var(--txt2)}
+    .btn-outline-grey:hover{border-color:var(--pri);color:var(--deep);background:rgba(164,186,18,.04)}
+    .btn-plain{background:none;border:none;padding:4px}.btn-icon-text{display:inline-flex;align-items:center;gap:4px}
+    .mat-icon,.material-icons,.material-symbols-outlined{font-family:'Material Symbols Outlined','Material Icons';font-size:20px;vertical-align:middle}
+
+    /* ═══════════════════════════════════════════
+       ★ BANNER — Full-bleed editorial bento layout
+       ═══════════════════════════════════════════ */
+    .banner{
+      background:var(--night);
+      padding:0;position:relative;overflow:hidden;
+    }
+
+    /* Layer: animated subtle grid */
+    .banner::before{
+      content:'';position:absolute;inset:0;
+      background-image:
+        linear-gradient(rgba(164,186,18,.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(164,186,18,.03) 1px,transparent 1px);
+      background-size:48px 48px;
+      animation:gridMove 16s ease-in-out infinite;z-index:0;
+    }
+
+    /* Layer: cinematic radial glow */
+    .banner::after{
+      content:'';position:absolute;
+      top:20%;left:15%;width:70%;height:100%;
+      background:radial-gradient(ellipse at 30% 50%,rgba(2,90,66,.18) 0%,rgba(164,186,18,.05) 40%,transparent 70%);
+      z-index:0;pointer-events:none;
+    }
+
+    .banner .container{
+      display:flex;position:relative;z-index:2;
+      padding-top:56px;padding-bottom:56px;
+    }
+
+    /* ★ KEY: Use CSS Grid on the inner flex div to create bento layout */
+    .banner .container > .d-flex {
+      display: grid !important;
+      grid-template-columns: auto 1fr auto;
+      grid-template-rows: auto;
+      gap: 0 40px;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* Logo — left column, large with float animation */
+    .banner--logo {
+      display: contents !important; /* children participate in parent grid */
+    }
+
+    .banner-flex {
+      display: contents !important;
+    }
+
+    .brand {
+      grid-column: 1;
+      grid-row: 1;
+      animation: revealLeft .8s cubic-bezier(.16,1,.3,1) both;
+    }
+
+    .brand img{
+      height:110px;width:auto;
+      filter:drop-shadow(0 0 40px rgba(164,186,18,.3)) drop-shadow(0 8px 20px rgba(0,0,0,.4));
+      animation:floatY 6s ease-in-out infinite;
+    }
+
+    /* Info — center column, glassmorphism card */
+    .banner--info-container{
+      grid-column:2;grid-row:1;
+      color:#fff;
+      animation: revealUp .7s ease .1s both;
+      background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(164,186,18,.04));
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--rad-l);
+      padding: 28px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative top-left accent corner */
+    .banner--info-container::before{
+      content:'';position:absolute;top:0;left:0;
+      width:60px;height:4px;
+      background:linear-gradient(90deg,var(--pri),var(--accent));
+      border-radius:0 0 4px 0;
+    }
+
+    /* Subtle inner glow */
+    .banner--info-container::after{
+      content:'';position:absolute;
+      top:-30%;right:-20%;
+      width:200px;height:200px;
+      background:radial-gradient(circle,rgba(164,186,18,.08) 0%,transparent 70%);
+      border-radius:50%;pointer-events:none;
+    }
+
+    .banner--header{font-size:var(--fs);font-family:var(--fd)}
+    .banner--header .badge{display:inline-block;padding:5px 14px;font-size:.65rem;font-weight:800;vertical-align:middle;letter-spacing:.8px;text-transform:uppercase;box-shadow:0 3px 12px rgba(255,107,0,.5);border-radius:50rem}
+
+    .banner--body{
+      font-size:var(--fs-xxl);font-weight:800;font-family:var(--fd);
+      line-height:1;letter-spacing:-1.5px;color:#fff;
+      margin:8px 0 4px;
+    }
+
+    /* Animated accent line under title */
+    .banner--info-container .banner--body::after{
+      content:'';display:block;
+      height:3px;width:0;margin-top:10px;
+      background:linear-gradient(90deg,var(--pri),var(--accent));
+      border-radius:2px;
+      animation:lineGrow .6s ease .8s forwards;
+    }
+
+    .banner--footer{font-size:var(--fs-s);margin-top:6px;color:rgba(255,255,255,.55)}
+    .banner--footer-description{opacity:.5}
+
+    /* ★ Price card — right column, glassmorphism with animated border */
+    .banner .text-end{
+      grid-column:3;grid-row:1;
+      background:linear-gradient(160deg,rgba(164,186,18,.05),rgba(2,90,66,.08));
+      backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+      border:1px solid rgba(164,186,18,.12);
+      border-radius:var(--rad-l);padding:28px 32px;
+      min-width:290px;text-align:right;
+      animation:revealRight .9s cubic-bezier(.16,1,.3,1) .2s both,glowBreathe 5s ease-in-out 1.5s infinite;
+      position:relative;
+    }
+
+    /* Decorative corner brackets */
+    .banner .text-end::before{content:'';position:absolute;top:6px;right:6px;width:36px;height:36px;border-top:2px solid var(--pri);border-right:2px solid var(--pri);border-radius:0 14px 0 0;pointer-events:none;opacity:.6}
+    .banner .text-end::after{content:'';position:absolute;bottom:6px;left:6px;width:36px;height:36px;border-bottom:2px solid var(--pri);border-left:2px solid var(--pri);border-radius:0 0 0 14px;pointer-events:none;opacity:.6}
+
+    /* Price text — animated gradient shimmer */
+    .banner .text-end .banner--body{
+      font-size:var(--fs-xxl);line-height:1;margin-bottom:8px;letter-spacing:-1px;
+      background:linear-gradient(90deg,#d4e84a,#A4BA12,#33a622,#A4BA12,#d4e84a);
+      background-size:300% auto;
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      animation:shimmer 4s linear infinite;
+    }
+    .banner .text-end .banner--body::after{display:none} /* no line under price */
+
+    .banner .text-end .banner--footer{color:rgba(255,255,255,.5);text-align:right}
+    .banner .text-end .sm-font-weight-lighter{font-weight:400;font-size:.78rem;line-height:1.5}
+    .banner .text-end .material-symbols-outlined{color:var(--pri)!important}
+
+    /* ═══════════════════════════════════════════
+       MAIN CONTENT
+       ═══════════════════════════════════════════ */
+    .main.container{padding-top:32px;padding-bottom:32px}
+    .content{background:var(--bg2);border-radius:var(--rad-l);overflow:hidden;animation:revealScale .5s ease both}
+    .card{background:var(--white);border-radius:var(--rad-l);overflow:visible}
+
+    /* ═══════════════════════════════════════════
+       CONTACT — Bento card grid with animated accents
+       ═══════════════════════════════════════════ */
+    .row-info{border-bottom:1px solid var(--bdr)}.row-info-details{background:var(--white)}
+
+    /* Override flex to CSS Grid for the contact row */
+    sm-opportunity-estimate-contact-information > .d-flex {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .your-info{
+      flex:none !important; min-width:0;
+      border:1px solid var(--bdr);border-radius:var(--rad);
+      transition:all .4s cubic-bezier(.4,0,.2,1);
+      position:relative;overflow:hidden;
+      padding:20px 16px !important;
+      background:var(--white) !important;
+    }
+
+    .your-info::before{
+      content:'';position:absolute;top:0;left:0;
+      width:0;height:3px;
+      background:linear-gradient(90deg,var(--pri),var(--accent));
+      transition:width .4s cubic-bezier(.4,0,.2,1);
+      border-radius:3px 3px 0 0;
+    }
+    .your-info:hover{
+      border-color:var(--pri);
+      box-shadow:0 8px 28px rgba(164,186,18,.08);
+      transform:translateY(-4px);
+    }
+    .your-info:hover::before{width:100%}
+
+    .salesperson-info--title,.customer-info--header{
+      font-size:.6rem;font-weight:800;text-transform:uppercase;
+      letter-spacing:2.5px;font-family:var(--fd);
+      padding-bottom:8px;
+      border-bottom:1px solid var(--bdr);
+      margin-bottom:10px !important;
+    }
+    .salesperson-info--name,.customer-info--name{font-size:1.05rem;font-weight:700;font-family:var(--fd);color:var(--txt)}
+    .salesperson-info--phone a{color:var(--deep);font-weight:600}
+    .salesperson-info--email,.customer-info--phone,.customer-info--email{font-size:var(--fs-s)}
+
+    /* Stops container fills 2 columns */
+    .stops-info-container{
+      grid-column:3/5;
+      flex:none !important;
+      margin:0 !important;
+    }
+    .stops{display:flex;height:100%}.stops-container{display:flex;gap:16px}
+
+    .location{
+      flex:1;border-radius:var(--rad);border:1px solid var(--bdr);
+      transition:all .4s cubic-bezier(.4,0,.2,1);
+      position:relative;overflow:hidden;
+      padding:20px 16px !important;
+      background:var(--white) !important;
+    }
+    .location::before{
+      content:'';position:absolute;top:0;left:0;
+      width:0;height:3px;
+      background:linear-gradient(90deg,var(--deep),var(--accent));
+      transition:width .4s ease;
+    }
+    .location:hover{border-color:var(--pri);transform:translateY(-4px);box-shadow:0 8px 28px rgba(164,186,18,.08)}
+    .location:hover::before{width:100%}
+
+    .location-description{font-size:var(--fs);font-weight:700;font-family:var(--fd);color:var(--txt)}
+    .location-property-info{font-size:var(--fs-s);font-weight:500}
+
+    /* ═══════════════ SCHEDULE ═══════════════ */
+    .charges-table{margin-top:16px}
+    .app-table{width:100%}
+    .app-table th{background:linear-gradient(135deg,var(--night),var(--deep));color:#fff;padding:13px 16px;font-size:var(--fs-s);font-weight:600;text-align:left;font-family:var(--fd);letter-spacing:.4px}
+    .app-table th:not(:first-child){text-align:right}
+    .app-table td{padding:14px 16px;border-bottom:1px solid var(--bdr);font-size:.9375rem;transition:background .2s ease}
+    .app-table tr.valign-top:hover td{background:rgba(164,186,18,.03)}
+    .app-table tr.valign-top td{vertical-align:top}.charges-card{display:none}
+
+    /* ═══════════════ VALUATION CARDS ═══════════════ */
+    .valuation-name{flex:2}.valuation-options{flex:1}.valuation-cost{flex:.5}
+    .declared-value-wrapper{display:flex;align-items:center;gap:8px}
+    .declared-input-wrapper{min-width:80px;text-align:center}
+    .click-to-edit-wrapper .editable{font-weight:600;cursor:pointer}
+    .cards-container{padding-top:16px;padding-bottom:28px;overflow:visible}
+    .drag-scroll-content{display:flex;gap:18px;overflow:visible;padding-bottom:18px}
+    sm-opportunity-estimate-upsell-valuation>div{overflow:visible!important}
+
+    .option-card{
+      min-width:222px;max-width:260px;
+      border:2px solid var(--bdr);border-radius:var(--rad-l);
+      transition:all .4s cubic-bezier(.34,1.56,.64,1);
+      flex-shrink:0;position:relative;z-index:1;background:var(--white);
+    }
+    .option-card:hover{border-color:var(--pri);box-shadow:0 20px 50px rgba(164,186,18,.16),0 0 0 1px var(--pri);transform:translateY(-10px) scale(1.03);z-index:10}
+    .option-card.selected{border-color:var(--pri);box-shadow:0 8px 28px rgba(164,186,18,.12);background:linear-gradient(180deg,var(--white) 0%,rgba(164,186,18,.02) 100%)}
+    .option-card.is-recommended{border-color:var(--pri)}
+    .option-card .recommended{background:linear-gradient(90deg,var(--night),var(--deep),var(--accent));background-size:200% auto;animation:slideGrad 5s ease infinite;color:#fff;padding:9px 16px;font-size:.58rem;border-radius:var(--rad-l) var(--rad-l) 0 0;letter-spacing:3px;font-family:var(--fd)}
+    .option-card .card-body{padding:22px 18px}.option-card h5{font-size:.875rem;color:var(--txt)}
+    .font-size-14{font-size:.875rem}.min-height-2{min-height:2rem}.min-height-3-point-5{min-height:3.5rem}.min-height-5{min-height:5rem}
+
+    /* ═══════════════ TOTALS ═══════════════ */
+    .app-table tbody td.text-end{text-align:right}
+
+    /* ═══════════════ ATTACHMENTS ═══════════════ */
+    .document-container{margin-right:32px;margin-bottom:16px}
+    .document-container .h4{display:flex;align-items:center;font-size:var(--fs)}
+    .document-container img{width:40px;height:40px;opacity:.6}
+
+    /* ═══════════════ NOTES ═══════════════ */
+    .row-info-notes{padding:28px 0;font-size:.9375rem;line-height:1.75}
+    .row-info-notes table{width:100%;margin-bottom:8px}.row-info-notes td{padding:8px 0}
+    .row-info-notes h2,.row-info-notes h3{margin-top:16px;margin-bottom:8px}
+    .row-info-notes p{margin-bottom:8px}
+    .row-info-notes ul{padding-left:24px;margin-bottom:12px}.row-info-notes ul li{margin-bottom:6px}
+    .row-info-notes hr{border:none;border-top:2px solid var(--bdr);margin:30px 0}
+
+    .section-divider{background:linear-gradient(90deg,var(--night),var(--deep),var(--pri),var(--accent));background-size:400% 100%;animation:slideGrad 10s ease infinite;height:5px;width:100%;border-radius:3px;margin:8px 0}
+
+    /* ═══════════════ AWARDS ═══════════════ */
+    .award_list li{display:flex;align-items:center;justify-content:center}
+    .award_list li img,.award_list li a img{max-height:68px!important;width:auto!important;height:auto!important;object-fit:contain;transition:all .3s ease;filter:saturate(.85)}
+    .award_list li:hover img{transform:scale(1.12);filter:saturate(1)}
+
+    /* ═══════════════ PARTNERS ═══════════════ */
+    .partner-logos img{height:36px!important;width:auto!important;max-width:110px!important;object-fit:contain!important;opacity:.55;filter:grayscale(50%);transition:all .35s ease}
+    .partner-logos img:hover{opacity:1;filter:grayscale(0%);transform:scale(1.1)}
+
+    /* ═══════════════ FOOTER ═══════════════ */
+    .large-footer{display:flex;justify-content:space-between;padding-top:16px;font-size:var(--fs-s);color:var(--txt3)}
+    .adaptive-text a{color:var(--txt3)}
+
+    /* ═══════════════ RESPONSIVE ═══════════════ */
+    @media(min-width:768px){
+      .d-md-inline{display:inline!important}.d-md-flex{display:flex!important}
+      .flex-md-row{flex-direction:row!important}.text-md-center{text-align:center!important}
+      .text-md-end{text-align:right!important}.ps-md-5{padding-left:3rem!important}
+      .pe-md-5{padding-right:3rem!important}.ms-lg-4{margin-left:1.5rem}
+      .mt-lg-0{margin-top:0}.mb-md-2{margin-bottom:.5rem}
+    }
+
+    @media(max-width:991px){
+      /* Banner: stack vertically */
+      .banner .container>.d-flex{
+        grid-template-columns:1fr !important;
+        grid-template-rows:auto auto auto;
+        text-align:center;
+        gap:20px 0;
+      }
+      .brand{grid-column:1;grid-row:1;justify-self:center}
+      .banner--info-container{grid-column:1;grid-row:2}
+      .banner--info-container{grid-column:1;grid-row:2;padding:20px 24px}
+      .banner .text-end{grid-column:1;grid-row:3;min-width:auto;text-align:center;margin:0 auto;max-width:340px}
+      .banner .text-end .banner--footer{text-align:center}
+      .banner--body{font-size:1.8rem!important}
+      .banner--info-container .banner--body::after{margin:10px auto 0}
+
+      /* Contact: 2-col on tablet */
+      sm-opportunity-estimate-contact-information>.d-flex{
+        grid-template-columns:1fr 1fr !important;
+      }
+      .stops-info-container{grid-column:1/3 !important}
+    }
+
+    @media(max-width:767px){
+      .banner .container>.d-flex{padding:0}
+      .banner .container{padding-top:32px;padding-bottom:32px}
+      .banner--body{font-size:1.5rem!important}
+
+      /* Contact: single column */
+      sm-opportunity-estimate-contact-information>.d-flex{
+        grid-template-columns:1fr !important;
+      }
+      .stops-info-container{grid-column:1 !important}
+      .stops-container{flex-direction:column}
+      .charges-table{display:none}.charges-card{display:block}
+      .drag-scroll-content{flex-direction:column;align-items:stretch;overflow:visible}
+      .option-card{max-width:100%;min-width:auto}
+      .option-card:hover{transform:translateY(-4px) scale(1.01)}
+      .award_list{grid-template-columns:repeat(3,1fr)!important}
+      .award_list li img,.award_list li a img{max-height:48px!important}
+      .partner-logos{gap:12px 16px!important}.partner-logos img{height:22px!important}
+    }
+
+    @media(min-width:992px){
+      .flex-lg-row{flex-direction:row!important}.align-items-lg-start{align-items:flex-start!important}
+      .ms-lg-4{margin-left:0!important} /* grid handles spacing now */
+      .mt-lg-0{margin-top:0!important}.mb-lg-5{margin-bottom:3rem!important}
+      .text-lg-end{text-align:right!important}
+      .stops-info-container{margin-top:0;margin-left:0}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================== HEADER ============================== -->
+<sm-estimate-white-bar-header>
+  <div class="bg-white header-wrapper">
+    <div class="container contact ps-2 ps-md-5 pe-md-5">
+      <header class="d-flex align-items-center justify-content-between app-header">
+        <div class="d-flex call-us">
+          <div class="align-items-center call-us--btn d-flex justify-content-center ms-0 me-1">
+            <a class="btn no-text-decoration ps-0" href="tel:(617) 208-4040">
+              <span class="material-symbols-outlined d-none d-md-inline">call</span>
+            </a>
+          </div>
+          <div class="d-inline">
+            <div class="call-us--text">Call us anytime</div>
+            <div class="call-us--number">
+              <a class="no-text-decoration sm-text-branding-button-bg-color" href="tel:(617) 208-4040">(617) 208-4040</a>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex header-buttons">
+          <a class="me-2" href="#">
+            <button class="btn btn-custom-branding text-uppercase rounded-lg text-nowrap">
+              <span class="d-none d-md-inline">Manage</span> Inventory
+            </button>
+          </a>
+          <button class="btn btn-custom-branding text-uppercase rounded-lg ms-2">
+            Sign <span class="d-none d-md-inline">Estimate</span>
+          </button>
+        </div>
+      </header>
+    </div>
+  </div>
+</sm-estimate-white-bar-header>
+
+<!-- ============================== BANNER ============================== -->
+<div class="banner">
+  <div class="container">
+    <div class="d-flex flex-md-row flex-column w-100 justify-content-between align-items-center sm-text-white-600">
+      <!-- Left side -->
+      <div class="banner--logo banner-flex">
+        <div class="brand">
+          <img alt="Stairhoppers Movers logo" src="./img/logo-white.png" title="Stairhoppers Movers">
+        </div>
+        <div class="banner--info-container sm-text-cp-branding-banner-text-color">
+          <div class="banner--header">
+            <div class="align-items-center d-flex justify-content-center justify-content-md-start pt-2">
+              Estimate #1260
+              <span class="badge rounded-pill ms-2 sm-bg-warning">Not Booked</span>
+            </div>
+          </div>
+          <div class="banner--body">Your Moving Estimate</div>
+          <div class="banner--footer sm-text-white">
+            <span class="banner--footer-description">Starting on:</span> Feb 18, 2026
+          </div>
+          <div class="banner--footer sm-text-white">
+            <span class="banner--footer-description">Arrival window:</span> 7:30a - 8:30a
+          </div>
+        </div>
+      </div>
+      <!-- Right side -->
+      <div class="text-end pt-1 pt-md-0">
+        <div class="banner--body text-center text-md-end">$2,350.25</div>
+        <div class="banner--footer">
+          <div class="sm-font-weight-lighter">4 Bedrooms</div>
+          <div class="sm-font-weight-lighter">2000 cuft / 14000 lbs</div>
+          <div class="sm-font-weight-lighter">Estimated 6hr, 3hr minimum</div>
+          <div class="sm-font-weight-lighter">Estimate for 1 truck &amp; 4 crew</div>
+          <div class="sm-font-weight-lighter">
+            <span>Non-Binding</span> Estimate
+          </div>
+          <div class="sm-font-weight-lighter">
+            Replacement Protection for $10,000 of Value
+            <span class="material-symbols-outlined sm-text-success-500">verified_user</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== MAIN CONTENT ============================== -->
+<div class="main container">
+  <div class="d-flex flex-column content bg-secondary mb-4 mb-lg-5 box-shadow-high justify-content-center align-items-center">
+    <div class="w-100">
+      <div class="card p-0">
+
+        <!-- ============ CONTACT INFO ============ -->
+        <sm-opportunity-estimate-contact-information>
+          <div class="d-flex flex-column flex-lg-row row-info row-info-details w-100 p-4">
+            <!-- Sales Manager -->
+            <div class="align-items-center align-items-lg-start align-items-start bg-secondary border-rounded d-flex justify-content-between p-2 your-info">
+              <div class="salesperson-info">
+                <div class="salesperson-info--title font-weight-light mb-1 sm-text-branding-title-color">Sales Manager</div>
+                <h3 class="salesperson-info--name mb-1 sm-font-size-normal sm-font-weight-500">Kevin</h3>
+                <div class="salesperson-info--phone">
+                  <a class="sm-text-branding-button-bg-color" href="tel:(617) 208-4040">(617) 208-4040</a>
+                </div>
+              </div>
+            </div>
+            <!-- Your Info -->
+            <div class="customer-info border-rounded bg-secondary p-2 your-info ms-lg-4 mt-4 mt-lg-0">
+              <div class="customer-info--header font-weight-light mb-1 sm-text-branding-title-color">Your Info</div>
+              <h3 class="customer-info--name mb-1 sm-font-size-normal sm-font-weight-500">Catalin</h3>
+              <div class="customer-info--email text-black-50 sm-font-size-small"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8eedeffaefe2e7e0efe5effeedcee9e3efe7e2a0ede1e3">[email&#160;protected]</a></div>
+              <div class="customer-info--phone text-black-50 sm-font-size-small">(617) 812-0681</div>
+            </div>
+            <!-- Stops -->
+            <div class="stops-info-container">
+              <sm-opportunity-estimate-stops-information>
+                <div class="stops d-flex flex-fill h-100">
+                  <div class="d-flex flex-column w-100 flex-md-row p-0 stops-container text-break">
+                    <!-- Origin -->
+                    <div class="location bg-secondary p-2 flex-fill">
+                      <div class="sm-text-branding-title-color font-weight-light mb-1">Origin</div>
+                      <h4 class="location-description mb-1 sm-font-weight-500 sm-font-size-normal">
+                        Malden Bridge, New York 12115
+                      </h4>
+                      <h5 class="location-property-info m-0 text-black-50 mb-md-2 sm-font-weight-500 sm-font-size-small">
+                        House • 0 flights of stairs
+                      </h5>
+                    </div>
+                    <!-- Destination -->
+                    <div class="location bg-secondary p-2 flex-fill">
+                      <div class="sm-text-branding-title-color font-weight-light mb-1">Destination</div>
+                      <h4 class="location-description mb-1 sm-font-weight-500 sm-font-size-normal">
+                        181 Service Rd<br>
+                        East Boston, Massachusetts 02128
+                      </h4>
+                      <h5 class="location-property-info m-0 text-black-50 mb-md-2 sm-font-weight-500 sm-font-size-small">
+                        House • 0 flights of stairs
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </sm-opportunity-estimate-stops-information>
+            </div>
+          </div>
+        </sm-opportunity-estimate-contact-information>
+
+        <!-- ============ JOB / ACTIVITY SCHEDULE ============ -->
+        <sm-opportunity-estimate-job-activity-schedule>
+          <div class="px-4 py-2 w-100 row-info row-info-details">
+            <div class="d-flex align-items-center">
+              <h3 class="m-0 sm-text-branding-title-color">Job / Activity Schedule</h3>
+            </div>
+
+            <!-- Desktop table -->
+            <div class="charges-table">
+              <table class="app-table">
+                <tr>
+                  <td colspan="4">
+                    <div class="my-3">
+                      <h3 class="m-0 mb-1">Moving</h3>
+                      <div class="text-grey">
+                        <span>2/18/2026</span>
+                        <span class="ms-1">(Arriving: 7:30a - 8:30a)</span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Description</th>
+                  <th>Rate</th>
+                  <th>Subtotal</th>
+                  <th>Cost</th>
+                </tr>
+                <tr class="valign-top">
+                  <td>Moving Labor (4 crew, 1 trucks)</td>
+                  <td class="text-end">6h @ $269.00/hr (1 truck, 4 crew)</td>
+                  <td class="text-end">$1,614.00</td>
+                  <td class="text-end">$1,614.00</td>
+                </tr>
+                <tr class="valign-top">
+                  <td>Estimated Travel Time</td>
+                  <td class="text-end">1h 15m @ $269.00/hr</td>
+                  <td class="text-end">$336.25</td>
+                  <td class="text-end">$336.25</td>
+                </tr>
+                <tr class="valign-top">
+                  <td>Replacement Protection for $10,000 of Value</td>
+                  <td class="text-end"></td>
+                  <td class="text-end">$400.00</td>
+                  <td class="text-end">$400.00</td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- Mobile cards -->
+            <div class="charges-card">
+              <div class="mb-4">
+                <div class="my-3">
+                  <h3 class="m-0 mb-1">Moving</h3>
+                  <div class="text-grey">
+                    <span>2/18/2026</span>
+                    <span class="ms-1">(Arriving: 7:30a - 8:30a)</span>
+                  </div>
+                </div>
+                <div class="align-items-center bg-secondary border-rounded p-3 my-3">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <span>Moving Labor (4 crew, 1 trucks)</span>
+                    <h2>$1,614.00</h2>
+                  </div>
+                  <div>6h @ $269.00/hr (1 truck, 4 crew)</div>
+                  <div>Subtotal: $1,614.00</div>
+                </div>
+                <div class="align-items-center bg-secondary border-rounded p-3 my-3">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <span>Estimated Travel Time</span>
+                    <h2>$336.25</h2>
+                  </div>
+                  <div>1h 15m @ $269.00/hr</div>
+                  <div>Subtotal: $336.25</div>
+                </div>
+                <div class="align-items-center bg-secondary border-rounded p-3 my-3">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <span>Replacement Protection for $10,000 of Value</span>
+                    <h2>$400.00</h2>
+                  </div>
+                  <div>Subtotal: $400.00</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sm-opportunity-estimate-job-activity-schedule>
+
+        <!-- ============ PROTECT YOUR MOVE ============ -->
+        <sm-opportunity-estimate-upsell-valuation>
+          <div class="py-2 w-100 row-info-details position-relative px-4 row-info">
+            <div class="d-flex align-items-center mb-2">
+              <h3 class="m-0 sm-text-branding-title-color">Protect Your Move</h3>
+            </div>
+            <div class="container p-0">
+              <div class="d-flex flex-column flex-md-row align-items-md-stretch align-items-start justify-content-md-between gap-3 gap-md-2 min-height-5">
+                <div class="pe-0 d-flex flex-column valuation-name">
+                  <small class="text-grey invisible">Type</small>
+                  <h4 class="m-0 mb-1 font-weight-700 d-flex flex-column flex-grow-1 align-items-start justify-content-center">
+                    Replacement Protection for $10,000 of Value
+                  </h4>
+                </div>
+                <div class="pe-0 d-flex flex-column valuation-options">
+                  <small class="text-grey text-start w-100 d-block text-md-center">Declared Value</small>
+                  <div class="align-items-center d-flex flex-grow-1">
+                    <div class="declared-value-wrapper d-flex align-items-center justify-content-center">
+                      <button class="btn btn-icon-text btn-plain border-0 opacity-50" disabled>
+                        <span class="material-symbols-outlined m-0">do_not_disturb_on</span>
+                      </button>
+                      <div class="declared-input-wrapper">
+                        <div class="click-to-edit-wrapper">
+                          <div class="editable text-primary sm-text-branding-title-color">$0.00</div>
+                        </div>
+                      </div>
+                      <button class="btn btn-icon-text btn-plain border-0">
+                        <span class="material-symbols-outlined m-0">add_circle</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="pe-0 d-flex flex-column valuation-options">
+                  <small class="text-grey text-start text-md-end mb-2">Deductible Amount</small>
+                  <h4 class="m-0 mb-1 d-flex flex-column flex-grow-1 align-items-end justify-content-center">$200.00</h4>
+                </div>
+                <div class="d-flex flex-column text-lg-end valuation-cost">
+                  <small class="text-grey text-start text-md-end">Cost</small>
+                  <h4 class="m-0 mb-1 d-flex flex-column flex-grow-1 align-items-end justify-content-center">$400.00</h4>
+                </div>
+              </div>
+            </div>
+
+            <!-- Valuation Cards -->
+            <div id="valuation-cards-container" class="cards-container pt-2 position-static">
+              <div class="drag-scroll-content">
+                <!-- Card 1: Recommended -->
+                <div class="card option-card is-recommended" data-test-id="valuation-card-0">
+                  <div class="w-100 d-flex justify-content-center align-items-center sm-font-weight-bolder recommended">RECOMMENDED</div>
+                  <div class="card-body d-flex flex-column justify-content-center align-items-center is-recommended">
+                    <h5 class="font-size-14 text-center sm-font-weight-bolder d-flex align-items-center justify-content-center w-100 position-relative min-height-2">
+                      <span class="px-4">Replacement Protection for $5000 of Value</span>
+                    </h5>
+                    <div class="min-height-3-point-5">
+                      <div class="d-flex flex-column justify-content-center align-items-center text-center">
+                        <p class="sm-text-gray-600 mb-1 font-size-14">Cost per value coverage up to</p>
+                        <span class="sm-font-size-large sm-font-weight-bolder">$5,000</span>
+                      </div>
+                    </div>
+                    <ul class="p-0 mt-4 list-unstyled justify-content-center align-items-center">
+                      <p class="text-left font-size-14">Based on the current replacement value of your items at the time of loss or damage, up to the declared amount. TERMS &amp; CONDITIONS APPLY.</p>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Card 2: Selected -->
+                <div class="card option-card selected" data-test-id="valuation-card-1">
+                  <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                    <h5 class="font-size-14 text-center sm-font-weight-bolder d-flex align-items-center justify-content-center w-100 position-relative min-height-2">
+                      <span class="px-4">Replacement Protection for $10,000 of Value</span>
+                    </h5>
+                    <div class="min-height-3-point-5">
+                      <div class="d-flex flex-column justify-content-center align-items-center text-center">
+                        <p class="sm-text-gray-600 mb-1 font-size-14">Cost per value coverage up to</p>
+                        <span class="sm-font-size-large sm-font-weight-bolder">$10,000</span>
+                      </div>
+                    </div>
+                    <ul class="p-0 mt-4 list-unstyled justify-content-center align-items-center">
+                      <p class="text-left font-size-14">Based on the current replacement value of your items at the time of loss or damage, up to the declared amount. TERMS &amp; CONDITIONS APPLY.</p>
+                    </ul>
+                    <div class="d-flex flex-grow-1 flex-column mt-1 text-center justify-content-end w-100 pb-2">
+                      <button class="btn btn-outline-grey w-100 d-flex justify-content-center font-weight-700">Remove (-$400.00)</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card option-card" data-test-id="valuation-card-2">
+                  <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                    <h5 class="font-size-14 text-center sm-font-weight-bolder d-flex align-items-center justify-content-center w-100 position-relative min-height-2">
+                      <span class="px-4">Replacement Protection for $15,000 of Value</span>
+                    </h5>
+                    <div class="min-height-3-point-5">
+                      <div class="d-flex flex-column justify-content-center align-items-center text-center">
+                        <p class="sm-text-gray-600 mb-1 font-size-14">Cost per value coverage up to</p>
+                        <span class="sm-font-size-large sm-font-weight-bolder">$15,000</span>
+                      </div>
+                    </div>
+                    <ul class="p-0 mt-4 list-unstyled justify-content-center align-items-center">
+                      <p class="text-left font-size-14">Based on the current replacement value of your items at the time of loss or damage, up to the declared amount. TERMS &amp; CONDITIONS APPLY.</p>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="card option-card" data-test-id="valuation-card-3">
+                  <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                    <h5 class="font-size-14 text-center sm-font-weight-bolder d-flex align-items-center justify-content-center w-100 position-relative min-height-2">
+                      <span class="px-4">Replacement Protection for $20,000 of Value</span>
+                    </h5>
+                    <div class="min-height-3-point-5">
+                      <div class="d-flex flex-column justify-content-center align-items-center text-center">
+                        <p class="sm-text-gray-600 mb-1 font-size-14">Cost per value coverage up to</p>
+                        <span class="sm-font-size-large sm-font-weight-bolder">$20,000</span>
+                      </div>
+                    </div>
+                    <ul class="p-0 mt-4 list-unstyled justify-content-center align-items-center">
+                      <p class="text-left font-size-14">Based on the current replacement value of your items at the time of loss or damage, up to the declared amount. TERMS &amp; CONDITIONS APPLY.</p>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sm-opportunity-estimate-upsell-valuation>
+
+        <!-- ============ TOTALS ============ -->
+        <sm-opportunity-estimate-totals>
+          <div class="px-4 py-2 w-100 row-info row-info-details">
+            <div class="d-flex flex-column p-0 pt-0">
+              <table class="app-table">
+                <tbody>
+                  <tr>
+                    <td class="text-end w-100">Estimated Subtotal</td>
+                    <td>$2,350.25</td>
+                  </tr>
+                  <tr>
+                    <td class="text-end w-100 pe-2">Estimated Total</td>
+                    <td class="fw-bold">$2,350.25</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </sm-opportunity-estimate-totals>
+
+        <!-- ============ ATTACHMENTS ============ -->
+        <sm-opportunity-estimate-documents-and-attachments>
+          <div class="px-4 py-2 w-100 row-info row-info-details">
+            <div class="d-flex align-items-center p-0 mt-2 mb-3">
+              <h3 class="m-0 sm-text-branding-title-color">Attachments</h3>
+            </div>
+            <div class="d-flex flex-wrap">
+              <div class="document-container">
+                <div class="h4 d-flex align-items-center">
+                  <span class="material-symbols-outlined me-3 pointer" style="font-size:32px;color:var(--text-secondary);">description</span>
+                  <div class="pointer">
+                    <span class="text-dark no-text-decoration h3 m-0 font-weight-light">Terms &amp; Conditions</span>
+                    <div class="text-grey small opacity-75">Click to view</div>
+                  </div>
+                </div>
+              </div>
+              <div class="document-container">
+                <div class="h4 d-flex align-items-center">
+                  <span class="material-symbols-outlined me-3 pointer" style="font-size:32px;color:var(--text-secondary);">description</span>
+                  <div class="pointer">
+                    <span class="text-dark no-text-decoration h3 m-0 font-weight-light">Policies</span>
+                    <div class="text-grey small opacity-75">Click to view</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sm-opportunity-estimate-documents-and-attachments>
+
+        <!-- ============ NOTES / RICH CONTENT ============ -->
+        <div class="px-4 py-2 w-100 row-info">
+          <div class="row-info-notes">
+
+            <!-- Non-binding notice -->
+            <div style="text-align:center; margin-bottom:24px;">
+              <strong style="font-size:18px; color:var(--branding-primary);">
+                🛡️ This estimate is non-binding and is subject to change 🛡️
+              </strong>
+              <br>
+              <strong style="font-size:18px; color:var(--branding-primary);">
+                The final cost will be based on actual hours worked, travel time, materials used, and conditions on moving day
+              </strong>
+            </div>
+
+            <!-- Included section -->
+            <div class="section-divider" style="height:40px; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+              <strong style="color:#fff; font-size:18px;">Included in Your Non-Binding Estimate</strong>
+            </div>
+
+            <div style="padding:16px 0 16px 20px; font-size:14px; line-height:2;">
+              ✅ Expert furniture disassembly and reassembly handled by Stairhoppers Movers professionals<br>
+              🛋️ Premium blankets, full-coverage protection for furniture, floors, stairways, and entryways<br>
+              👷‍♂️ Highly trained, full-time, uniformed Stairhoppers Movers team<br>
+              🔧 Professional-grade equipment and commercial moving materials used on every move<br>
+              🚚 Clean, modern, and fully equipped Stairhoppers Movers trucks<br>
+              📦 Precise placement of all items at your new location, exactly as directed<br>
+              🏠 All-inclusive pricing: mileage, fuel, stairs, and multiple stops included (local moves only)<br>
+              💰 No hidden fees or taxes included; storage-related blanket use may incur additional charges
+            </div>
+
+            <!-- Trust badges / Awards -->
+            <ul class="award_list flex" style="display:grid; grid-template-columns:repeat(6, 1fr); gap:20px 16px; padding:24px 0; list-style:none; justify-items:center; align-items:center;">
+              <li><a href="https://www.forbes.com/home-improvement/moving-services/local-movers/moving-companies-boston-ma/" target="_blank" rel="noopener"><img src="https://stairhoppers.com/wp-content/uploads/2024/02/Best-Moving-Companies-In-Boston-MA-2024-158x240.png" alt="Best Moving Companies In Boston MA 2024"></a></li>
+              <li><img src="https://stairhoppers.com/wp-content/uploads/2020/05/award-01.png" alt="Elite Service"></li>
+              <li><img src="https://stairhoppers.com/wp-content/uploads/2020/05/award-02.png" alt="BBB A+ Rating"></li>
+              <li><img src="https://stairhoppers.com/wp-content/uploads/2020/12/Inc.-5000-stairhopper-movers.png" alt="Inc. 5000"></li>
+              <li><img src="https://stairhoppers.com/wp-content/uploads/2020/05/award-04.png" alt="ProMover"></li>
+              <li><img src="https://stairhoppers.com/wp-content/uploads/2020/05/award-06.png" alt="Google Guaranteed"></li>
+              <li><img src="https://stairhoppers.com/wp-content/uploads/2020/05/award-07.png" alt="Google Reviews"></li>
+              <li><img src="https://stairhoppers.com/wp-content/uploads/2020/05/award-08.png" alt="ThreeBest Rated"></li>
+              <li><img src="https://stairhoppers.com/wp-content/uploads/2020/12/TALK-Awards-2024-150x150.png" alt="Talk Awards 2024"></li>
+              <li><img src="https://stairhoppers.com/wp-content/uploads/2020/12/angies-list-150x150.png" alt="Angi Super Service Award"></li>
+              <li><a href="https://www.expertise.com/ma/boston/moving" target="_blank" rel="noopener"><img src="https://stairhoppers.com/wp-content/uploads/2020/12/best-movers-boston-expertise.com_.svg" alt="Top Moving in Boston - Expertise.com"></a></li>
+              <li><img src="https://stairhoppers.com/wp-content/uploads/2020/12/Winner-badge-USA-2024-259x240.png" alt="Best of America Winner Small Business Award 2024"></li>
+            </ul>
+
+            <!-- Billing Time -->
+            <div class="section-divider"></div>
+            <h3 style="margin-top:16px;">
+              <span style="font-size:18px;">🕒 </span>
+              <strong style="color:var(--branding-primary); font-size:18px;">Billing Time &amp; Minimum Hours</strong>
+            </h3>
+            <p style="font-size:14px; margin-top:8px;">
+              ⚠️ Time starts when our movers leave the storage facility, located in Boston, MA, and ends when the team returns to our storage facility. If storage services are requested, the time will end after everything has been unloaded into our storage unit.
+            </p>
+            <p style="font-size:14px; margin-top:8px;">
+              ⚠️ <strong style="color:var(--color-danger);">Minimum 3-hr. charge</strong> applies for all moves, and additional time is billed in <strong>15 min increments</strong>. Travel time is included in the minimum charge.
+            </p>
+
+            <!-- Final Payment Policy -->
+            <div class="section-divider" style="margin-top:24px;"></div>
+            <h3 style="margin-top:16px;">
+              💳 <strong style="color:var(--branding-primary); font-size:18px;">Final Payment Policy</strong>
+            </h3>
+            <p style="font-size:14px; margin-top:8px;">
+              <strong>Accepted Payment Methods:</strong> Cash or Credit Card only; personal checks are NOT accepted.
+            </p>
+            <p style="font-size:14px; margin-left:20px; margin-top:8px;">
+              💰 <strong>Cash Payments:</strong> <strong style="color:var(--color-danger);">Enjoy a 10% DISCOUNT on the remaining balance after the deposit has been applied.</strong>
+            </p>
+            <p style="font-size:14px; margin-left:20px; margin-top:8px;">
+              💳 <strong>Credit Card Payments:</strong> The cardholder's name must match the reservation name. If different, a signed credit card authorization form is required from the cardholder.
+            </p>
+
+            <!-- Additional Possible Charges -->
+            <div class="section-divider" style="margin-top:24px;"></div>
+            <h3 style="margin-top:16px;">
+              <span style="color:var(--branding-primary);">💼 </span>
+              <strong style="color:var(--branding-primary); font-size:18px;">Additional Possible Charges</strong>
+            </h3>
+            <div style="font-size:14px; margin-left:20px; margin-top:8px; line-height:2;">
+              📦 <strong>Packing Materials &amp; Tolls:</strong> Not included in the hourly rate (tape, boxes, mattress covers, bubble wrap, moving bins, etc.)<br>
+              🎹 <strong>Piano Handling:</strong> Baby Grand/Grand $500, Upright $300 (first floor to first floor or elevator only). <em>Provide piano type, size, and access in writing.</em><br>
+              🎱 <strong>Pool Table:</strong> $250 (must be fully dismantled)<br>
+              🏗️ <strong>Hoisting Services:</strong> $100 / item<br>
+              🧱 <strong>Overweight Items:</strong> $250 (e.g., gun/valuable safe, exercise equipment)<br>
+              🔌 <strong>Appliances:</strong> $75 each (washer, dryer, fridge, stove, freezer)<br>
+              🛋️ <strong>Moving Blankets for Storage or Third-Party Delivery:</strong> $20 each; $5 refund for each blanket returned at move-out or delivery
+            </div>
+
+            <!-- Furniture Removal -->
+            <div class="section-divider" style="margin-top:24px;"></div>
+            <h3 style="margin-top:16px;">
+              🪑 <strong style="color:var(--branding-primary); font-size:18px;">Furniture Removal</strong>
+            </h3>
+            <p style="font-size:14px; margin-top:8px;">
+              <strong>Got old furniture you don't want to bring along?</strong> <strong>Stairhoppers Movers</strong> now offers
+              <strong style="font-size:18px; color:var(--color-danger);">FURNITURE REMOVAL SERVICES</strong>
+              – we'll haul it away so you don't have to! 💪🚛
+            </p>
+            <p style="font-size:14px;">Ask your sales representative for details.</p>
+            <div style="font-size:14px; margin-left:20px; margin-top:8px;">
+              <strong>✅ No hassle<br>✅ No extra trips<br>✅ Just one more way we make moving easy</strong>
+            </div>
+
+            <!-- Certificates of Insurance -->
+            <div class="section-divider" style="margin-top:24px;"></div>
+            <h2 style="margin-top:16px; font-size:18px;">
+              📄 <strong style="color:var(--branding-primary);">Certificates of Insurance</strong>
+            </h2>
+            <p style="font-size:14px; margin-top:8px;">
+              Once your move is booked, we can issue a <strong>certificate of insurance</strong> for your building. 🏢 Check with building management to confirm exactly what they require. Most buildings ask for both a <strong>certificate holder</strong> and an <strong>additional insured</strong>, so include those details in your request. <strong>No extra fee</strong> for this service! ✅
+            </p>
+
+            <!-- Parking Permits -->
+            <h2 style="margin-top:24px; font-size:18px;">
+              🅿️ <strong style="color:var(--branding-primary);">Parking Permits</strong>
+            </h2>
+            <p style="font-size:14px; margin-top:8px;">
+              Need a <strong>parking permit</strong>? 🚛 Let us know in writing at least <strong>5 business days before your move</strong>. We handle permits year-round for <strong>Boston moves</strong> (except moves <strong>August 1st through September 1st</strong>). The cost is <strong>$255 per permit/location</strong>, which includes <strong>pulling the permit and posting signs 48 hours before your move</strong>. 🪧
+            </p>
+
+            <!-- Insurance Options -->
+            <div class="section-divider" style="margin-top:24px;"></div>
+            <h3 style="margin-top:16px;">
+              🛡️ <strong style="color:var(--branding-primary); font-size:18px;">Insurance Options</strong>
+            </h3>
+            <p style="font-size:14px; margin-top:8px;">
+              When planning your move, it's important to understand the coverage available to protect your belongings. Stairhoppers Movers offers two options:
+            </p>
+            <ul style="font-size:14px; margin-top:8px; padding-left:24px;">
+              <li style="margin-bottom:8px;">
+                <strong>Option A: Basic Valuation</strong>
+                <ul style="margin-top:4px;">
+                  <li>Included at no extra cost</li>
+                  <li>Covers <strong>$0.60 per pound per damaged item</strong>, in accordance with <strong>Massachusetts law</strong></li>
+                  <li>Simple, straightforward protection</li>
+                </ul>
+              </li>
+              <li style="margin-bottom:8px;">
+                <strong>Option B: Replacement Coverage</strong>
+                <ul style="margin-top:4px;">
+                  <li>Additional charge applies</li>
+                  <li>Covers the <strong>current replacement value</strong> of your items</li>
+                  <li>Reimbursement may be based on repair, restoration, or depreciated value</li>
+                  <li>Provides broader protection for valuable or fragile items</li>
+                </ul>
+              </li>
+            </ul>
+            <p style="font-size:14px; margin-top:16px;">
+              <strong style="color:var(--branding-primary);">NEED MORE COVERAGE??</strong>
+              We have plenty of other options - up to $100,000. Give us a call or send us an email, and we will be happy to assist in adding the coverage you require.
+            </p>
+
+            <!-- Preferred Real Estate Partners -->
+            <div style="margin-top:32px; text-align:center;">
+              <div class="section-divider" style="height:40px; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                <strong style="color:#fff; font-size:16px;">A Preferred Mover for Many Real Estate Agencies Including</strong>
+              </div>
+              <div class="partner-logos" style="display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:28px 40px; padding:28px 16px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Keller_Williams_Realty_logo.svg/1280px-Keller_Williams_Realty_logo.svg.png" alt="Keller Williams">
+                <img src="https://static.cdnlogo.com/logos/b/62/berkshire-hathaway-homeservices.png" alt="Berkshire Hathaway HomeServices">
+                <img src="https://cdn.nwe.io/files/x/3d/87/7d294dff5c31c02b586484ae4a42.png" alt="Harry Norman Realtors">
+                <img src="https://wp.logos-download.com/wp-content/uploads/2016/10/Sothebys_Realty_logo_logotype.png?dl" alt="Sotheby's International Realty">
+                <img src="https://cdn.thedesignpeople.net/agentimagex/images/ssrec-logo.png" alt="Solid Source Realty">
+                <img src="https://cdn.freebiesupply.com/logos/large/2x/coldwell-banker-4228-logo-black-and-white.png" alt="Coldwell Banker">
+                <img src="https://cdn.freebiesupply.com/logos/large/2x/century-21-new-logo-png-transparent.png" alt="Century 21">
+                <img src="https://superbrands.com.pt/wp-content/uploads/2024/10/REMAX.png" alt="RE/MAX">
+              </div>
+            </div>
+
+            <p style="text-align:center; margin-top:24px;">
+              <strong style="font-size:18px;">If we do not receive your selection, Option A (Basic Valuation) will be automatically applied.</strong>
+            </p>
+
+            <hr>
+
+            <!-- Terms & Conditions -->
+            <div style="margin-top:16px;">
+              <strong><em style="color:var(--branding-primary);">Terms &amp; Conditions:</em></strong>
+            </div>
+            <ul style="font-size:14px; font-style:italic; padding-left:24px; margin-top:8px;">
+              <li>Any damage must be clearly shown in the presence of our movers and noted on the Bill of Lading.</li>
+              <li>All claims must be filed within 15 days from the moving date.</li>
+              <li>Items packed in boxes by you or your representatives and not by our team will not be covered.</li>
+              <li>Valuables such as jewelry, family photos, documents, laptops, checks, money, keys, and remotes should be removed prior to the move - we have no liability for these items.</li>
+              <li>Malfunction of electronic equipment is not covered.</li>
+            </ul>
+
+            <hr>
+
+            <!-- Thank you -->
+            <div style="text-align:center; margin-top:16px;">
+              <strong style="color:var(--branding-primary);">
+                Thank you for choosing Stairhoppers Movers — we truly appreciate your trust and look forward to a long-lasting relationship!
+              </strong>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== FOOTER ============================== -->
+<sm-footer>
+  <div class="container pb-4 sm-font-size-small">
+    <footer class="adaptive-text">
+      <div class="d-flex
