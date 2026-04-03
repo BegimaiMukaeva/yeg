@@ -6,7 +6,7 @@
   <title>Stairhoppers Movers — Estimate #1260</title>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
     /* ═══════════════ ANIMATIONS ═══════════════ */
     @keyframes revealUp { from{opacity:0;transform:translateY(40px) scale(.97)} to{opacity:1;transform:translateY(0) scale(1)} }
@@ -26,7 +26,7 @@
       --pri:#A4BA12; --pri-d:#8DA00F; --deep:#025a42; --accent:#33a622; --forest:#0c361e; --night:#061a0e;
       --warn:#FF6B00; --ok:#33a622; --danger:#c0392b;
       --white:#fff; --bg2:#F2F4E9; --bg-page:#E6EAD8; --txt:#0c361e; --txt2:#3d5434; --txt3:#708566; --bdr:#c2cfb0;
-      --ff:'DM Sans',system-ui,sans-serif; --fd:'Outfit','DM Sans',system-ui,sans-serif;
+      --ff:'Open Sans',system-ui,sans-serif; --fd:'Open Sans',system-ui,sans-serif;
       --fs-xs:.75rem; --fs-s:.8125rem; --fs:1rem; --fs-l:1.5rem; --fs-xl:2.4rem; --fs-xxl:3.2rem;
       --mw:1140px; --rad:12px; --rad-l:20px; --shadow:0 16px 56px rgba(12,54,30,.10);
     }
@@ -150,36 +150,11 @@
       animation:floatY 6s ease-in-out infinite;
     }
 
-    /* Info — center column, glassmorphism card */
+    /* Info — center column, editorial typography */
     .banner--info-container{
       grid-column:2;grid-row:1;
       color:#fff;
       animation: revealUp .7s ease .1s both;
-      background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(164,186,18,.04));
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: var(--rad-l);
-      padding: 28px 32px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Decorative top-left accent corner */
-    .banner--info-container::before{
-      content:'';position:absolute;top:0;left:0;
-      width:60px;height:4px;
-      background:linear-gradient(90deg,var(--pri),var(--accent));
-      border-radius:0 0 4px 0;
-    }
-
-    /* Subtle inner glow */
-    .banner--info-container::after{
-      content:'';position:absolute;
-      top:-30%;right:-20%;
-      width:200px;height:200px;
-      background:radial-gradient(circle,rgba(164,186,18,.08) 0%,transparent 70%);
-      border-radius:50%;pointer-events:none;
     }
 
     .banner--header{font-size:var(--fs);font-family:var(--fd)}
@@ -394,7 +369,6 @@
       }
       .brand{grid-column:1;grid-row:1;justify-self:center}
       .banner--info-container{grid-column:1;grid-row:2}
-      .banner--info-container{grid-column:1;grid-row:2;padding:20px 24px}
       .banner .text-end{grid-column:1;grid-row:3;min-width:auto;text-align:center;margin:0 auto;max-width:340px}
       .banner .text-end .banner--footer{text-align:center}
       .banner--body{font-size:1.8rem!important}
@@ -540,7 +514,7 @@
             <div class="customer-info border-rounded bg-secondary p-2 your-info ms-lg-4 mt-4 mt-lg-0">
               <div class="customer-info--header font-weight-light mb-1 sm-text-branding-title-color">Your Info</div>
               <h3 class="customer-info--name mb-1 sm-font-size-normal sm-font-weight-500">Catalin</h3>
-              <div class="customer-info--email text-black-50 sm-font-size-small"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8eedeffaefe2e7e0efe5effeedcee9e3efe7e2a0ede1e3">[email&#160;protected]</a></div>
+              <div class="customer-info--email text-black-50 sm-font-size-small">catalinakapc@gmail.com</div>
               <div class="customer-info--phone text-black-50 sm-font-size-small">(617) 812-0681</div>
             </div>
             <!-- Stops -->
@@ -1048,4 +1022,11 @@
 <sm-footer>
   <div class="container pb-4 sm-font-size-small">
     <footer class="adaptive-text">
-      <div class="d-flex
+      <div class="d-flex large-footer justify-content-between w-100 adaptive-text">
+      </div>
+    </footer>
+  </div>
+</sm-footer>
+
+</body>
+</html>
