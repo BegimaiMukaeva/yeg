@@ -82,15 +82,15 @@
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       color: #fa4149; font-size: 18px;
     }
-    .call-label { font-size: 0.7rem; color: var(--txt3); line-height: 1.2; }
-    .call-number { font-weight: 700; color: #fa4149; font-size: 0.95rem; }
+    .call-label { font-size: 0.76rem; color: var(--txt3); line-height: 1.2; }
+    .call-number { font-weight: 700; color: #fa4149; font-size: 1.02rem; }
     .call-number a { color: #fa4149; }
     .header-btns { display: flex; gap: 10px; }
     .header-btn {
       display: inline-flex; align-items: center; gap: 6px;
       background: var(--pri-mid); color: #fff;
       padding: 10px 22px; border-radius: var(--rad);
-      font-size: 0.8rem; font-weight: 700; font-family: var(--fd);
+      font-size: 0.86rem; font-weight: 700; font-family: var(--fd);
       letter-spacing: 0.4px; text-transform: uppercase;
       cursor: pointer; border: none;
       transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
@@ -130,13 +130,15 @@
     .brand-box {
       width: 72px; height: 72px; flex-shrink: 0;
       background: var(--white);
-      border: 2px solid rgba(37,99,235,0.25);
+      border: 2px solid rgba(250,65,73,0.35);
       border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
       font-family: var(--fd); font-weight: 800; font-size: 1.3rem;
-      color: var(--pri-mid);
-      box-shadow: 0 2px 10px rgba(37,99,235,0.12);
+      color: #fa4149;
+      box-shadow: 0 2px 10px rgba(250,65,73,0.2);
+      transition: transform 0.2s ease;
     }
+    .brand-box:hover { transform: translateY(-2px); }
     .banner-info {}
     .est-row {
       display: flex; align-items: center; gap: 10px;
@@ -172,15 +174,17 @@
       min-width: 280px; flex-shrink: 0;
       text-align: right;
       box-shadow: var(--sh);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+    .price-card:hover { transform: translateY(-2px); box-shadow: var(--sh-lg); }
     .price-main {
       font-size: 2.5rem; font-weight: 800; font-family: var(--fd);
       color: var(--txt); line-height: 1; margin-bottom: 14px;
     }
-    .price-rows { font-size: 0.8rem; }
+    .price-rows { font-size: 0.9rem; }
     .price-row {
       display: flex; justify-content: space-between; gap: 24px;
-      padding: 3px 0; color: var(--txt2);
+      padding: 2px 0; color: var(--txt2);
     }
     .price-row .p-label { color: var(--txt3); }
     .price-row .p-val { font-weight: 600; color: var(--txt); }
@@ -251,7 +255,9 @@
       min-height: 136px;
       padding: 18px 18px 16px;
       box-shadow: 0 2px 12px rgba(37,99,235,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+    .inner-info-box:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(37,99,235,0.14); }
     .inner-info-label {
       font-size: 0.7rem;
       font-weight: 800;
