@@ -465,9 +465,10 @@
 
     .drag-scroll-content {
       display: flex;
-      gap: 16px;
+      gap: 12px;
       overflow: visible;
       padding-bottom: 12px;
+      flex-wrap: nowrap;
     }
 
     /* Override parent card overflow for valuation section */
@@ -476,12 +477,13 @@
     }
 
     .option-card {
-      min-width: 220px;
-      max-width: 260px;
+      flex: 1 1 0;
+      min-width: 0;
+      max-width: none;
       border: 2px solid var(--border-color);
       border-radius: var(--border-radius-lg);
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      flex-shrink: 0;
+      flex-shrink: 1;
       position: relative;
       z-index: 1;
     }

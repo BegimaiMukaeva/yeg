@@ -328,14 +328,17 @@
     .declared-input-wrapper{min-width:80px;text-align:center}
     .click-to-edit-wrapper .editable{font-weight:600;cursor:pointer}
     .cards-container{padding-top:16px;padding-bottom:28px;overflow:visible}
-    .drag-scroll-content{display:flex;gap:18px;overflow:visible;padding-bottom:18px}
+    .drag-scroll-content{
+      display:flex;gap:12px;overflow:visible;padding-bottom:18px;flex-wrap:nowrap;
+    }
     sm-opportunity-estimate-upsell-valuation>div{overflow:visible!important}
 
     .option-card{
-      min-width:222px;max-width:260px;
+      flex:1 1 0;
+      min-width:0;max-width:none;
       border:2px solid var(--bdr);border-radius:var(--rad-l);
       transition:all .4s cubic-bezier(.34,1.56,.64,1);
-      flex-shrink:0;position:relative;z-index:1;background:var(--white);
+      flex-shrink:1;position:relative;z-index:1;background:var(--white);
     }
     .option-card:hover{border-color:var(--pri);box-shadow:0 20px 50px rgba(164,186,18,.16),0 0 0 1px var(--pri);transform:translateY(-10px) scale(1.03);z-index:10}
     .option-card.selected{border-color:var(--pri);box-shadow:0 8px 28px rgba(164,186,18,.12);background:linear-gradient(180deg,var(--white) 0%,rgba(164,186,18,.02) 100%)}
