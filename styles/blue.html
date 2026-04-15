@@ -490,6 +490,59 @@
       .inner-contact-row { grid-template-columns: 1fr; }
       .val-cards { flex-direction: column; }
     }
+
+    /* ═══════════════════════════════════════════════════════════
+       SPLASH SCREEN ANIMATION — plays on page load, then fades
+       ═══════════════════════════════════════════════════════════ */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: #2a5084;
+      z-index: 999999;
+      animation: splashFade 1s ease forwards;
+      animation-delay: 5s;
+      pointer-events: none;
+    }
+    body::after {
+      content: 'STARVING ARTISTS\A MOVERS';
+      white-space: pre;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ffffff;
+      font-family: Georgia, serif;
+      font-size: 32px;
+      letter-spacing: 10px;
+      text-align: center;
+      z-index: 9999999;
+      opacity: 0;
+      text-shadow: 0 0 40px rgba(255, 64, 66, 0.6), 0 2px 8px rgba(0,0,0,0.4);
+      border-bottom: 2px solid #ff4042;
+      padding-bottom: 12px;
+      animation: textAppear 4s ease forwards;
+      pointer-events: none;
+    }
+    @keyframes textAppear {
+      0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.85) translateY(20px); letter-spacing: 4px; }
+      25%  { opacity: 1; transform: translate(-50%, -50%) scale(1) translateY(0); letter-spacing: 10px; }
+      70%  { opacity: 1; transform: translate(-50%, -50%) scale(1) translateY(0); letter-spacing: 10px; }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(1.08) translateY(-15px); letter-spacing: 14px; }
+    }
+    @keyframes splashFade {
+      0%   { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+
+    body > * {
+      animation: pageReveal 0.01s ease forwards;
+      animation-delay: 6s;
+      opacity: 0;
+    }
+    @keyframes pageReveal {
+      to { opacity: 1; }
+    }
   </style>
 </head>
 <body>
